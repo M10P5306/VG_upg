@@ -34,7 +34,17 @@ function addCharacter(e) {
     }
     document.getElementById("search-results").innerHTML = "";
     document.getElementById("search-field").value = "";
-    console.log(chosenCharacter.name + "FOUND");
+
+    const container = document.getElementById("card-container");
+    const card = document.createElement("div");
+    const name = document.createElement("h3");
+    name.textContent = chosenCharacter.name;
+    const description = document.createElement("p");
+    description.textContent = "Gender:"+chosenCharacter.gender+"\nHairColor:"+chosenCharacter.hair_color+"\nHeight:"+chosenCharacter.height;
+    card.appendChild(name);
+    card.appendChild(description);
+    card.addEventListener("click", () => {console.log("dickfart")});
+    container.appendChild(card);
 }
 
 document.getElementById('search-field').addEventListener('keyup', searchCharacter);
