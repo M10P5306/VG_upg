@@ -8,9 +8,9 @@ Clone the repository and run npm install. Once done run npm run dev.
 
 ### Prerequisites
 
-Axios 1.9.0
-Popper 2.11.8
-Vite 6.3.5
+Axios 1.9.0 - Makeing requests easy. Easier than fetch()?, probably not.
+Popper 2.11.8 - Enables popup tooltips for elements.
+Vite 6.3.5 - Buildtool for webapps.
 
 ### Installing
 
