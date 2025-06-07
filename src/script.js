@@ -1,4 +1,5 @@
 let data;
+let numberOfItems = 0;
 
 function searchCharacter() {
 
@@ -9,7 +10,6 @@ function searchCharacter() {
         axios({method: 'GET', url: "https://swapi.info/api/people"}).then((response) => {
             data = response.data;
 
-            console.log(data);
             for (let i = 0; i < response.data.length; i++) {
                 if (response.data[i].name.toLowerCase().includes(search)) {
                     const dropdown = document.getElementById("search-results");
@@ -43,8 +43,35 @@ function addCharacter(e) {
     description.textContent = "Gender:"+chosenCharacter.gender+"\nHairColor:"+chosenCharacter.hair_color+"\nHeight:"+chosenCharacter.height;
     card.appendChild(name);
     card.appendChild(description);
-    card.addEventListener("click", () => {console.log("dickfart")});
     container.appendChild(card);
+
+    axios({method: 'GET', url: chosenCharacter.homeworld}).then((response) => {
+
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("tooltip");
+        tooltip.id = "tooltip"+numberOfItems++;
+        tooltip.textContent = "Homeworld: " + response.data.name;
+        document.body.appendChild(tooltip);
+
+        const popperInstance = Popper.createPopper(card, tooltip)
+
+        function show() {
+            tooltip.setAttribute('data-show', '');
+
+            popperInstance.update();
+        }
+
+        function hide() {
+            tooltip.removeAttribute('data-show');
+        }
+
+        const showEvents = ['mouseenter', 'focus'];
+        const hideEvents = ['mouseleave', 'blur'];
+
+        showEvents.forEach(event => card.addEventListener(event, show));
+        hideEvents.forEach(event => card.addEventListener(event, hide));
+
+    })
 }
 
 document.getElementById('search-field').addEventListener('keyup', searchCharacter);

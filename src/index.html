@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>VG-Project</title>
+    <style>
+        .tooltip {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            display: none;
+        }
+        .tooltip[data-show] {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <header><h1>StarWars Service using SWAPI, Axios and Popper</h1>
@@ -20,6 +34,7 @@
 </main>
 <footer>VG-uppgift by Mikael Nilsson</footer>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="script.js"></script>
 </body>
 </html>
