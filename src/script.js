@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { createPopper } from '@popperjs/core';
+
 let data;
 let numberOfItems = 0;
 
@@ -53,7 +56,7 @@ function addCharacter(e) {
         tooltip.textContent = "Homeworld: " + response.data.name;
         document.body.appendChild(tooltip);
 
-        const popperInstance = Popper.createPopper(card, tooltip)
+        const popperInstance = createPopper(card, tooltip)
 
         function show() {
             tooltip.setAttribute('data-show', '');
